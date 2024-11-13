@@ -20,14 +20,14 @@ namespace ApiProject.Controllers
         [HttpPost]
         public async Task<IActionResult> FetchAndSaveAlbums()
         {
-            var albums = await _apiservice.GetFile();
+           var albums = await _apiservice.GetFile();
 
             // Return a success response
             return Ok(new { Message = "Albums fetched and saved successfully", AlbumCount = albums.Count });
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Albums>>> Get()
+        public async Task<IEnumerable<Albums>> Get()
         {
             return await _db.Album.ToListAsync();
         }
